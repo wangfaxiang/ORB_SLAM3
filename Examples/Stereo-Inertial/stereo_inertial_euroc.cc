@@ -297,6 +297,7 @@ void LoadImages(const string &strPathLeft, const string &strPathRight, const str
     vTimeStamps.reserve(5000);
     vstrImageLeft.reserve(5000);
     vstrImageRight.reserve(5000);
+    int count = 0;
     while(!fTimes.eof())
     {
         string s;
@@ -312,7 +313,9 @@ void LoadImages(const string &strPathLeft, const string &strPathRight, const str
             vTimeStamps.push_back(t/1e9);
 
         }
+        count++;
     }
+    cout << "加载图片数量：" << count << " images" << endl;
 }
 
 void LoadIMU(const string &strImuPath, vector<double> &vTimeStamps, vector<cv::Point3f> &vAcc, vector<cv::Point3f> &vGyro)
@@ -322,7 +325,7 @@ void LoadIMU(const string &strImuPath, vector<double> &vTimeStamps, vector<cv::P
     vTimeStamps.reserve(5000);
     vAcc.reserve(5000);
     vGyro.reserve(5000);
-
+    int count = 0;
     while(!fImu.eof())
     {
         string s;
@@ -348,5 +351,7 @@ void LoadIMU(const string &strImuPath, vector<double> &vTimeStamps, vector<cv::P
             vAcc.push_back(cv::Point3f(data[4],data[5],data[6]));
             vGyro.push_back(cv::Point3f(data[1],data[2],data[3]));
         }
+        count++;
     }
+    cout << "IMU数据量：" << count << " images" << endl;
 }

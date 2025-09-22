@@ -1,0 +1,37 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Stereo-Inertial Euroc",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/Examples/Stereo-Inertial/stereo_inertial_euroc",
+            "args": [
+                "../Vocabulary/ORBvoc.txt",
+                "./Stereo-Inertial/EuRoC.yaml",
+                "/home/promote/wfx/learn/github/MH_01_easy",
+                "./Stereo-Inertial/EuRoC_TimeStamps/MH01.txt",
+                "dataset-MH01_stereoi"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/Examples",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "logging": {
+                "trace": true,
+                "traceResponse": true,
+                "engineLogging": true
+            }
+        }
+    ]
+}
