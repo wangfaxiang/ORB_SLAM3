@@ -189,6 +189,7 @@ int main(int argc, char **argv)
                      << string(vstrImageRight[seq][ni]) << endl;
                 return 1;
             }
+            cout << "处理第几帧 Processing frame " << ni+1 << " / " << nImages[seq] << endl;
 
 
 #ifdef REGISTER_TIMES

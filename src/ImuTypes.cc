@@ -263,8 +263,23 @@ void Preintegrated::IntegrateNewMeasurement(const cv::Point3f &acceleration, con
     cv::Mat A = cv::Mat::eye(9,9,CV_32F);
     cv::Mat B = cv::Mat::zeros(9,6,CV_32F);
 
+    // if(b.bax != 0 || b.bay != 0 || b.baz != 0 || b.bwx != 0 || b.bwy != 0 || b.bwz != 0)
+    // {
+    //     std::cout << "Preintegrated::IntegrateNewMeasurement: non-zero bias not implemented yet" << std::endl;
+    //     throw std::runtime_error("Preintegrated::IntegrateNewMeasurement: non-zero bias not implemented yet");
+    // }
+
     cv::Mat acc = (cv::Mat_<float>(3,1) << acceleration.x-b.bax,acceleration.y-b.bay, acceleration.z-b.baz);
     cv::Mat accW = (cv::Mat_<float>(3,1) << angVel.x-b.bwx, angVel.y-b.bwy, angVel.z-b.bwz);
+
+    // 添加打印语句
+    std::cout << "IMU Preintegration Debug Info:" << std::endl;
+    std::cout << "dR (Delta Rotation):" << std::endl << dR << std::endl;
+    std::cout << "avgA (Average Acceleration):" << std::endl << avgA << std::endl;
+    std::cout << "avgW (Average Angular Velocity):" << std::endl << avgW << std::endl;
+    std::cout << "位置变化:" << std::endl << dP << std::endl;
+    std::cout << "速度变化:" << std::endl << dV << std::endl;        
+    std::cout << "------------------------" << std::endl;
 
     avgA = (dT*avgA + dR*acc*dt)/(dT+dt);
     avgW = (dT*avgW + accW*dt)/(dT+dt);

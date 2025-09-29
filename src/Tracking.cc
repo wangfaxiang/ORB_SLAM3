@@ -1444,7 +1444,23 @@ void Tracking::PreintegrateIMU()
 
 
     const int n = mvImuFromLastFrame.size()-1;
+
     IMU::Preintegrated* pImuPreintegratedFromLastFrame = new IMU::Preintegrated(mLastFrame.mImuBias,mCurrentFrame.mImuCalib);
+
+    // 添加打印语句
+    // cout << "IMU Bias Parameters:" << endl;
+    // cout << "Accelerometer Bias - X: " << mLastFrame.mImuBias.bax 
+    //     << ", Y: " << mLastFrame.mImuBias.bay 
+    //     << ", Z: " << mLastFrame.mImuBias.baz << endl;
+    // cout << "Gyroscope Bias - X: " << mLastFrame.mImuBias.bwx 
+    //     << ", Y: " << mLastFrame.mImuBias.bwy 
+    //     << ", Z: " << mLastFrame.mImuBias.bwz << endl;
+
+    // cout << "IMU Calibration Parameters:" << endl;
+    // cout << "Tbc (Body to Camera Transformation):" << endl << mCurrentFrame.mImuCalib.Tbc << endl;
+    // cout << "Tcb (Camera to Body Transformation):" << endl << mCurrentFrame.mImuCalib.Tcb << endl;
+    // cout << "Covariance Matrix:" << endl << mCurrentFrame.mImuCalib.Cov << endl;
+    // cout << "Random Walk Covariance Matrix:" << endl << mCurrentFrame.mImuCalib.CovWalk << endl;
 
     for(int i=0; i<n; i++)
     {
